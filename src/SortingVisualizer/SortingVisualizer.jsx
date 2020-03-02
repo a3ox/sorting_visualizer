@@ -3,6 +3,8 @@ import "./SortingVisualizer.css";
 import { genBubbleSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 
 const ANIMATION_SPEED = 5;
+const PRIMARY_COLOR = "turquoise";
+const SECONDARY_COLOR = "red";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -35,12 +37,12 @@ export default class SortingVisualizer extends React.Component {
       const barOneStyle = arrayBar[barOneIndex].style;
       const barTwoStyle = arrayBar[barTwoIndex].style;
       setTimeout(() => {
-        barOneStyle.background = "red";
-        barTwoStyle.background = "red";
+        barOneStyle.background = SECONDARY_COLOR;
+        barTwoStyle.background = SECONDARY_COLOR;
       }, i * ANIMATION_SPEED - ANIMATION_SPEED / 3);
       setTimeout(() => {
-        barOneStyle.background = "turquoise";
-        barTwoStyle.background = "turquoise";
+        barOneStyle.background = PRIMARY_COLOR;
+        barTwoStyle.background = PRIMARY_COLOR;
       }, i * ANIMATION_SPEED + ANIMATION_SPEED / 3);
       if (swap) {
         setTimeout(() => {
