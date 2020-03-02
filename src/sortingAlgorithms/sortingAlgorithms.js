@@ -9,13 +9,15 @@ function bubbleSortHelper(array, animations) {
   do {
     var sort = false;
     for (let i = 0; i < n; i++) {
+      var compare = [i, i + 1, false];
       if (array[i] > array[i + 1]) {
         const temp = array[i];
         array[i] = array[i + 1];
         array[i + 1] = temp;
         sort = true;
-        animations.push([i, i + 1]);
+        compare[2] = true;
       }
+      animations.push(compare);
     }
     n--;
   } while (sort);
