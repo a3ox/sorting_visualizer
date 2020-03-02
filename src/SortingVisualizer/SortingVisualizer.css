@@ -1,12 +1,12 @@
 .array-container {
-    position: absolute;
-    bottom: 10px;
-    left: 85px;
+  position: absolute;
+  bottom: 10px;
+  left: 85px;
 }
 
 .array-bar {
-    width: 3px;
-    background-color: turquoise;
-    display: inline-block;
-    margin: 0 1px;
+  width: 6px;
+  background-color: turquoise;
+  display: inline-block;
+  margin: 0 1px;
 }
