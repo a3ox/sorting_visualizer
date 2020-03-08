@@ -4,7 +4,7 @@ import { genBubbleSortAnimations } from "../sortingAlgorithms/sortingAlgorithms"
 import { genInsertionSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 import { genMergeSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 
-const ANIMATION_SPEED_MS = 10;
+const ANIMATION_SPEED_MS = 5;
 const PRIMARY_COLOR = "turquoise";
 const SECONDARY_COLOR = "red";
 
@@ -13,20 +13,31 @@ export default class SortingVisualizer extends React.Component {
     super(props);
 
     this.state = {
-      array: []
+      array: [],
+      width: parseInt(window.innerWidth),
+      height: parseInt(window.innerHeight)
     };
   }
 
   componentDidMount() {
+    this.updateWindowDimensions();
     this.resetArray();
   }
 
+  updateWindowDimensions() {
+    this.setState({
+      width: parseInt(window.innerWidth),
+      height: parseInt(window.innerHeight)
+    });
+  }
+
   resetArray() {
-    const array = [];
-    for (let i = 0; i < 100; i++) {
-      array.push(randomIntFromInterval(50, 800));
+    const newArray = [];
+    const pad = 12;
+    for (let i = 0; i < (this.state.width - pad * 2) / pad; i++) {
+      newArray.push(randomIntFromInterval(40, this.state.height - 50));
     }
-    this.setState({ array });
+    this.setState({ array: newArray });
   }
 
   mergeSort() {
@@ -125,10 +136,10 @@ export default class SortingVisualizer extends React.Component {
         <button onClick={() => this.mergeSort()}>Merge Sort</button>
         <button onClick={() => this.insertionSort()}>Insertion Sort</button>
         <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-        <button onClick={() => this.quickSort()}>Quick Sort</button>
+        {/* <button onClick={() => this.quickSort()}>Quick Sort</button>
         <button onClick={() => this.selectionSort()}>Selection Sort</button>
         <button onClick={() => this.heapSort()}>Heap Sort</button>
-        <button onClick={() => this.radixSort()}>Radix Sort</button>
+        <button onClick={() => this.radixSort()}>Radix Sort</button> */}
       </div>
     );
   }
