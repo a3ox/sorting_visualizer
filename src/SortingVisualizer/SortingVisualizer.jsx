@@ -128,6 +128,16 @@ export default class SortingVisualizer extends React.Component {
 
     return (
       <div>
+        <div className="opt-bar">
+          <button onClick={() => this.resetArray()}>Generate New Array</button>
+          <button onClick={() => this.mergeSort()}>Merge Sort</button>
+          <button onClick={() => this.insertionSort()}>Insertion Sort</button>
+          <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
+          <button onClick={() => this.quickSort()}>Quick Sort</button>
+          <button onClick={() => this.selectionSort()}>Selection Sort</button>
+          <button onClick={() => this.heapSort()}>Heap Sort</button>
+          <button onClick={() => this.radixSort()}>Radix Sort</button>
+        </div>
         <div className="array-container">
           {array.map((value, idx) => (
             <div
@@ -136,16 +146,6 @@ export default class SortingVisualizer extends React.Component {
               style={{ height: `${value}px` }}
             ></div>
           ))}
-        </div>
-        <div className="top-bar">
-          <button onClick={() => this.resetArray()}>Generate New Array</button>
-          <button onClick={() => this.mergeSort()}>Merge Sort</button>
-          <button onClick={() => this.insertionSort()}>Insertion Sort</button>
-          <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-          {/* <button onClick={() => this.quickSort()}>Quick Sort</button>
-        <button onClick={() => this.selectionSort()}>Selection Sort</button>
-        <button onClick={() => this.heapSort()}>Heap Sort</button>
-        <button onClick={() => this.radixSort()}>Radix Sort</button> */}
         </div>
       </div>
     );

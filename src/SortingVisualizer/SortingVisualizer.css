@@ -10,15 +10,53 @@ body {
 
 .array-bar {
   width: 10px;
-  /* position: relative; */
+  position: relative;
   background-color: #40e0d0;
   display: inline-block;
   margin: 1px;
 }
 
-.top-bar {
-  position: absolute;
+/* .topnav {
+  background-color: #333;
+  overflow: hidden;
+} */
+
+/* Style the links inside the navigation bar */
+/* .topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+
+  text-decoration: none;
+  font-size: 17px;
+} */
+
+/* Change the color of links on hover */
+/* .topnav a:hover {
+  background-color: #ddd;
+  color: black;
+} */
+
+/* Add a color to the active/current link */
+/* .topnav a.active {
+  background-color: #4caf50;
+  color: white;
+} */
+
+.opt-bar {
+  position: relative;
+  background-color: #333;
+  overflow: hidden;
   width: 100%;
   height: 50px;
-  background: grey;
+}
+
+.opt-bar button {
+  float: left;
+  /* color: #f2f2f2; */
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 0px;
+  height: 100%;
 }
