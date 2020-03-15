@@ -15,7 +15,8 @@ export default class SortingVisualizer extends React.Component {
     this.state = {
       array: [],
       width: parseInt(window.innerWidth),
-      height: parseInt(window.innerHeight)
+      height: parseInt(window.innerHeight),
+      algorithm: null
     };
   }
 
@@ -28,6 +29,12 @@ export default class SortingVisualizer extends React.Component {
     this.setState({
       width: parseInt(window.innerWidth),
       height: parseInt(window.innerHeight)
+    });
+  }
+
+  updateAlgorithm(alg = null) {
+    this.setState({
+      algorithm: alg.bind(this)
     });
   }
 
@@ -115,13 +122,16 @@ export default class SortingVisualizer extends React.Component {
     }
   }
 
-  quickSort() {}
+  // quickSort() {}
+  // selectionSort() {}
+  // heapSort() {}
+  // radixSort() {}
 
-  selectionSort() {}
-
-  heapSort() {}
-
-  radixSort() {}
+  callSelectedSort() {
+    if (this.state.algorithm) {
+      this.state.algorithm.call();
+    }
+  }
 
   render() {
     const { array } = this.state;
@@ -130,13 +140,21 @@ export default class SortingVisualizer extends React.Component {
       <div>
         <div className="opt-bar">
           <button onClick={() => this.resetArray()}>Generate New Array</button>
-          <button onClick={() => this.mergeSort()}>Merge Sort</button>
-          <button onClick={() => this.insertionSort()}>Insertion Sort</button>
-          <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
-          <button onClick={() => this.quickSort()}>Quick Sort</button>
+          <button onClick={() => this.updateAlgorithm(this.mergeSort)}>
+            Merge Sort
+          </button>
+          <button onClick={() => this.updateAlgorithm(this.insertionSort)}>
+            Insertion Sort
+          </button>
+          <button onClick={() => this.updateAlgorithm(this.bubbleSort)}>
+            Bubble Sort
+          </button>
+          <button onClick={() => this.callSelectedSort()}>Sort</button>
+
+          {/* <button onClick={() => this.quickSort()}>Quick Sort</button>
           <button onClick={() => this.selectionSort()}>Selection Sort</button>
           <button onClick={() => this.heapSort()}>Heap Sort</button>
-          <button onClick={() => this.radixSort()}>Radix Sort</button>
+          <button onClick={() => this.radixSort()}>Radix Sort</button> */}
         </div>
         <div className="array-container">
           {array.map((value, idx) => (
