@@ -1,4 +1,8 @@
 import React from "react";
+import ReactNotification from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
+import { store } from "react-notifications-component";
+import "../animate.css";
 import "./SortingVisualizer.css";
 import { genBubbleSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 import { genInsertionSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
@@ -44,14 +48,51 @@ export default class SortingVisualizer extends React.Component {
 
     this.updateWindowDimensions();
     for (let i = 0; i < (this.state.width - pad * 2) / pad; i++) {
-      newArray.push(randomIntFromInterval(40, this.state.height - 50 - pad));
+      newArray.push(
+        randomIntFromInterval(
+          this.state.height / 6,
+          this.state.height - 50 - pad
+        )
+      );
     }
     this.setState({ array: newArray });
   }
 
+  sendNotification(title_in, type_in, message_in) {
+    store.addNotification({
+      title: title_in,
+      message: message_in,
+      type: type_in,
+      insert: "top",
+      container: "top-right",
+      animationIn: ["animated", "fadeIn"],
+      animationOut: ["animated", "fadeOut"],
+      dismiss: {
+        duration: 3000,
+        onScreen: true
+      }
+    });
+  }
+
+  callSelectedSort() {
+    if (this.state.algorithm) {
+      this.state.algorithm.call();
+      this.sendNotification(
+        "Sorting complete",
+        "success",
+        "Merge sort has finished"
+      );
+    } else {
+      this.sendNotification(
+        "Error",
+        "danger",
+        "Please select a sorting algorithm"
+      );
+    }
+  }
+
   mergeSort() {
     const animations = genMergeSortAnimations(this.state.array);
-    console.log(this.state.array);
     for (let i = 0; i < animations.length; i++) {
       const arrayBars = document.getElementsByClassName("array-bar");
       const isColorChange = i % 3 !== 2;
@@ -127,12 +168,6 @@ export default class SortingVisualizer extends React.Component {
   // heapSort() {}
   // radixSort() {}
 
-  callSelectedSort() {
-    if (this.state.algorithm) {
-      this.state.algorithm.call();
-    }
-  }
-
   render() {
     const { array } = this.state;
 
@@ -162,6 +197,7 @@ export default class SortingVisualizer extends React.Component {
           <button onClick={() => this.radixSort()}>Radix Sort</button> */}
         </div>
         <div className="array-container">
+          <ReactNotification />
           {array.map((value, idx) => (
             <div
               className="array-bar"
