@@ -4,9 +4,9 @@ import { genBubbleSortAnimations } from "../sortingAlgorithms/sortingAlgorithms"
 import { genInsertionSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 import { genMergeSortAnimations } from "../sortingAlgorithms/sortingAlgorithms";
 
-const ANIMATION_SPEED_MS = 5;
-const PRIMARY_COLOR = "turquoise";
-const SECONDARY_COLOR = "red";
+const ANIMATION_SPEED_MS = 10;
+const PRIMARY_COLOR = "#40e0d0";
+const SECONDARY_COLOR = "#a7726e";
 
 export default class SortingVisualizer extends React.Component {
   constructor(props) {
@@ -149,7 +149,12 @@ export default class SortingVisualizer extends React.Component {
           <button onClick={() => this.updateAlgorithm(this.bubbleSort)}>
             Bubble Sort
           </button>
-          <button onClick={() => this.callSelectedSort()}>Sort</button>
+          <button
+            className="sort-button"
+            onClick={() => this.callSelectedSort()}
+          >
+            Preform Sort
+          </button>
 
           {/* <button onClick={() => this.quickSort()}>Quick Sort</button>
           <button onClick={() => this.selectionSort()}>Selection Sort</button>
