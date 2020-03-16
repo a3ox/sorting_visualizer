@@ -51,7 +51,7 @@ export default class SortingVisualizer extends React.Component {
       newArray.push(
         randomIntFromInterval(
           this.state.height / 6,
-          this.state.height - 50 - pad
+          this.state.height - 55 - pad
         )
       );
     }
@@ -76,12 +76,14 @@ export default class SortingVisualizer extends React.Component {
 
   callSelectedSort() {
     if (this.state.algorithm) {
-      this.state.algorithm.call();
-      this.sendNotification(
-        "Sorting complete",
-        "success",
-        "Merge sort has finished"
-      );
+      const totalSortingTime = this.state.algorithm.call();
+      setTimeout(() => {
+        this.sendNotification(
+          "Sorting complete!",
+          "success",
+          "The chosen sorting algorithm has completed."
+        );
+      }, totalSortingTime);
     } else {
       this.sendNotification(
         "Error",
@@ -113,6 +115,7 @@ export default class SortingVisualizer extends React.Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
+    return animations.length * ANIMATION_SPEED_MS;
   }
 
   insertionSort() {
@@ -136,6 +139,7 @@ export default class SortingVisualizer extends React.Component {
         barTwoStyle.height = `${barOneHeight}px`;
       }, i * ANIMATION_SPEED_MS);
     }
+    return animations.length * ANIMATION_SPEED_MS;
   }
 
   bubbleSort() {
@@ -161,6 +165,7 @@ export default class SortingVisualizer extends React.Component {
         }, i * ANIMATION_SPEED_MS);
       }
     }
+    return animations.length * ANIMATION_SPEED_MS;
   }
 
   // quickSort() {}
