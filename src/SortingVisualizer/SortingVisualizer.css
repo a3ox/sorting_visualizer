@@ -24,7 +24,7 @@ body {
   height: 50px;
 }
 
-.opt-bar button {
+.opt-button {
   float: left;
   border: none;
   background-color: inherit;
@@ -39,10 +39,33 @@ body {
   height: 100%;
 }
 
-.opt-bar button:hover {
+.opt-button:hover {
   background-color: #54585a;
 }
 
-.opt-bar button:active {
+.opt-button:active {
+  background-color: #237b72;
+}
+
+.sort-button {
+  float: left;
+  border: none;
+  background-color: inherit;
+  color: #bb8588;
+  padding: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 0px;
+  height: 100%;
+}
+
+.sort-button:hover {
+  background-color: #54585a;
+}
+
+.sort-button:active {
   background-color: #237b72;
 }

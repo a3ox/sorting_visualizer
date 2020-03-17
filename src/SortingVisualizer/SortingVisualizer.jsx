@@ -40,6 +40,8 @@ export default class SortingVisualizer extends React.Component {
     this.setState({
       algorithm: alg.bind(this)
     });
+    const sortButton = document.getElementsByClassName("sort-button");
+    sortButton[0].style.color = "#b1cc74";
   }
 
   resetArray() {
@@ -179,14 +181,25 @@ export default class SortingVisualizer extends React.Component {
     return (
       <div>
         <div className="opt-bar">
-          <button onClick={() => this.resetArray()}>Generate New Array</button>
-          <button onClick={() => this.updateAlgorithm(this.mergeSort)}>
+          <button className="opt-button" onClick={() => this.resetArray()}>
+            Generate New Array
+          </button>
+          <button
+            className="opt-button"
+            onClick={() => this.updateAlgorithm(this.mergeSort)}
+          >
             Merge Sort
           </button>
-          <button onClick={() => this.updateAlgorithm(this.insertionSort)}>
+          <button
+            className="opt-button"
+            onClick={() => this.updateAlgorithm(this.insertionSort)}
+          >
             Insertion Sort
           </button>
-          <button onClick={() => this.updateAlgorithm(this.bubbleSort)}>
+          <button
+            className="opt-button"
+            onClick={() => this.updateAlgorithm(this.bubbleSort)}
+          >
             Bubble Sort
           </button>
           <button
