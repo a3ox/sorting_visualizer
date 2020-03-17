@@ -1,3 +1,7 @@
+### Code Splitting
+View deployed app here: https://a3ox.github.io/sorting_visualizer/
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
