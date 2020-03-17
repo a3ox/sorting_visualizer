@@ -80,17 +80,13 @@ export default class SortingVisualizer extends React.Component {
     if (this.state.algorithm) {
       const totalSortingTime = this.state.algorithm.call();
       setTimeout(() => {
-        this.sendNotification(
-          "Sorting complete!",
-          "success",
-          "The chosen sorting algorithm has completed."
-        );
+        this.sendNotification("Success!", "success", "Sorting completed.");
       }, totalSortingTime);
     } else {
       this.sendNotification(
         "Error",
         "danger",
-        "Please select a sorting algorithm"
+        "Please select a sorting algorithm."
       );
     }
   }
